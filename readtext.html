@@ -1,0 +1,95 @@
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!--scrollers-->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="jquery.mousewheel.min.js"></script>
+<script src="jquery.mCustomScrollbar.js"></script>
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+	
+	
+<style type="text/css">
+body{
+	background-image:none;
+	background-color:#fff;
+	background-color:rgba(0,0,0,0);
+	overflow-y:hidden;
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$('#back').hide();
+		
+		$('#fall12').click(function() {
+				$('#pagetext').attr('width', "100%");
+				$('#pagetext').attr('height', "110%");
+				$('#pagetext').attr('src', "magazines/fall12.html");
+				$('#back').show();
+		});
+		
+		$('#back').click(function(){
+				$('#pagetext').attr('width', "0");
+				$('#pagetext').attr('height', "0");
+				$(this).hide();
+		});
+	
+		(function($){
+				$(window).load(function(){
+					$("#albumlist").mCustomScrollbar({
+						set_width:false, /*optional element width: boolean, pixels, percentage*/
+						set_height:false, /*optional element height: boolean, pixels, percentage*/
+						horizontalScroll:false, /*scroll horizontally: boolean*/
+						scrollInertia:550, /*scrolling inertia: integer (milliseconds)*/
+						scrollEasing:"easeOutCirc", /*scrolling easing: string*/
+						mouseWheel:"pixels", /*mousewheel support and velocity: boolean, "auto", integer, "pixels"*/
+						mouseWheelPixels:60, /*mousewheel pixels amount: integer*/
+						autoDraggerLength:true, /*auto-adjust scrollbar dragger length: boolean*/
+						scrollButtons:{ /*scroll buttons*/
+							enable:false, /*scroll buttons support: boolean*/
+							scrollType:"continuous", /*scroll buttons scrolling type: "continuous", "pixels"*/
+							scrollSpeed:20, /*scroll buttons continuous scrolling speed: integer*/
+							scrollAmount:40 /*scroll buttons pixels scroll amount: integer (pixels)*/
+						},
+						advanced:{
+							updateOnBrowserResize:true, /*update scrollbars on browser resize (for layouts based on percentages): boolean*/
+							updateOnContentResize:false, /*auto-update scrollbars on content resize (for dynamic content): boolean*/
+							autoExpandHorizontalScroll:false, /*auto expand width for horizontal scrolling: boolean*/
+							autoScrollOnFocus:true /*auto-scroll on focused elements: boolean*/
+						},
+						callbacks:{
+							onScrollStart:function(){}, /*user custom callback function on scroll start event*/
+							onScroll:function(){}, /*user custom callback function on scroll event*/
+							onTotalScroll:function(){}, /*user custom callback function on scroll end reached event*/
+							onTotalScrollBack:function(){}, /*user custom callback function on scroll begin reached event*/
+							onTotalScrollOffset:0, /*scroll end reached offset: integer (pixels)*/
+							whileScrolling:false, /*user custom callback function on scrolling event*/
+							whileScrollingInterval:30 /*interval for calling whileScrolling callback: integer (milliseconds)*/
+						}
+					});
+				});
+				})(jQuery);
+	
+	});
+</script>
+</head>
+<body>
+<div id = "back">
+back
+</div>
+<iframe id = "pagetext" src = "" width = "0" height = "0" frameborder="0" scrolling="no"></iframe>
+<h1>Read Big Straw</h1>
+<hr color="#b6eceb">
+<p>Select magazine</p>
+<div id = "albumlistwrapper">
+	<div id = "albumlist">
+		<div id = "mag" style="cursor: pointer">
+			<img id="fall12" class="magthumb" src="magazines/thumbs/fall12.jpg"></img>
+			<br><center>Fall 2012</center>
+		</div>
+	</div>
+</div>
+</body>
+</html>

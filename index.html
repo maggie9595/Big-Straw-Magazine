@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--
+This site managed by Maggie Yu (maggieyu@cmu.edu)
+Big Straw Magazine 2014-2015
+Last Updated 8/20/14
+-->
+
+<html>
+<title>Big Straw Magazine</title>
+<head>
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!--scrollers-->
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="jquery.mousewheel.min.js"></script>
+<script src="jquery.mCustomScrollbar.js"></script>
+
+
+<script type="text/javascript">
+	var moving;
+	
+	function init() {
+	  document.getElementById('home').style.top = '110px'; 
+	  document.getElementById('about').style.top = '120px'; 
+	  document.getElementById('read').style.top = '130px'; 
+	  document.getElementById('photos').style.top = '140px'; 
+      moving = false;
+	}
+	
+	function doMove(obj) {
+	  obj.style.top = parseInt(obj.style.top)-2+'px';
+	  if (obj.style.top != "-250px") {
+		setTimeout(function() { doMove(obj) },1); // call doMove in 1msec
+	  }
+	  else {
+		moving = false;
+	  }
+	
+	}
+	
+	$(document).ready(function() {
+		(function($){
+			$(window).load(function(){
+				$("#pagetext").mCustomScrollbar({
+					set_width:false, /*optional element width: boolean, pixels, percentage*/
+					set_height:false, /*optional element height: boolean, pixels, percentage*/
+					horizontalScroll:false, /*scroll horizontally: boolean*/
+					scrollInertia:550, /*scrolling inertia: integer (milliseconds)*/
+					scrollEasing:"easeOutCirc", /*scrolling easing: string*/
+					mouseWheel:"pixels", /*mousewheel support and velocity: boolean, "auto", integer, "pixels"*/
+					mouseWheelPixels:60, /*mousewheel pixels amount: integer*/
+					autoDraggerLength:true, /*auto-adjust scrollbar dragger length: boolean*/
+					scrollButtons:{ /*scroll buttons*/
+						enable:false, /*scroll buttons support: boolean*/
+						scrollType:"continuous", /*scroll buttons scrolling type: "continuous", "pixels"*/
+						scrollSpeed:20, /*scroll buttons continuous scrolling speed: integer*/
+						scrollAmount:40 /*scroll buttons pixels scroll amount: integer (pixels)*/
+					},
+					advanced:{
+						updateOnBrowserResize:true, /*update scrollbars on browser resize (for layouts based on percentages): boolean*/
+						updateOnContentResize:false, /*auto-update scrollbars on content resize (for dynamic content): boolean*/
+						autoExpandHorizontalScroll:false, /*auto expand width for horizontal scrolling: boolean*/
+						autoScrollOnFocus:true /*auto-scroll on focused elements: boolean*/
+					},
+					callbacks:{
+						onScrollStart:function(){}, /*user custom callback function on scroll start event*/
+						onScroll:function(){}, /*user custom callback function on scroll event*/
+						onTotalScroll:function(){}, /*user custom callback function on scroll end reached event*/
+						onTotalScrollBack:function(){}, /*user custom callback function on scroll begin reached event*/
+						onTotalScrollOffset:0, /*scroll end reached offset: integer (pixels)*/
+						whileScrolling:false, /*user custom callback function on scrolling event*/
+						whileScrollingInterval:30 /*interval for calling whileScrolling callback: integer (milliseconds)*/
+					}
+				});
+			});
+			})(jQuery);
+		
+		
+		$("#home").mouseover(function(){
+			if (moving == false){
+				$("#home:not(:animated)").effect( "bounce", {times:3}, 300 );
+			}
+		});
+		
+		$("#about").mouseover(function(){
+			if (moving == false){
+				$("#about:not(:animated)").effect( "bounce", {times:3}, 300 );
+			}
+		});
+		
+		$("#read").mouseover(function(){
+			if (moving == false){
+				$("#read:not(:animated)").effect( "bounce", {times:3}, 300 );
+			}
+		});
+		
+		$("#photos").mouseover(function(){
+			if (moving == false){
+				$("#photos:not(:animated)").effect( "bounce", {times:3}, 300 );
+			}
+		});
+		
+        $('#home').click(function() {
+			var obj = document.getElementById('home'); 
+			if (moving == false) {
+				moving = true;
+				document.getElementById('about').style.top = "120px"
+				document.getElementById('read').style.top = "130px"
+				document.getElementById('photos').style.top = "140px"
+				doMove(obj);
+				$('#pagetext').attr('src', "hometext.html");	
+			}
+		});
+		
+		$('#about').click(function() {
+			var obj = document.getElementById('about'); 
+			if (moving == false) {
+				moving = true;
+				document.getElementById('home').style.top = "110px"
+				document.getElementById('read').style.top = "130px";
+				document.getElementById('photos').style.top = "140px"
+				doMove(obj);
+				$('#pagetext').attr('src', "abouttext.html");
+			}
+		});
+		
+		$('#read').click(function() {
+			var obj = document.getElementById('read'); 
+			if (moving == false) {
+				moving = true;
+				document.getElementById('home').style.top = "110px"
+				document.getElementById('about').style.top = "120px"
+				document.getElementById('photos').style.top = "140px"
+				doMove(obj);
+				$('#pagetext').attr('src', "readtext.html");
+			}	
+        });
+		
+		$('#photos').click(function() {
+			var obj = document.getElementById('photos'); 
+			if (moving == false) {
+				moving = true;
+				document.getElementById('home').style.top = "110px"
+				document.getElementById('about').style.top = "120px"
+				document.getElementById('read').style.top = "130px"
+				doMove(obj);
+				$('#pagetext').attr('src', "photostext.html");	
+			}
+		});
+	
+	});
+	
+	window.onload = init;
+</script>
+
+</head>
+<body>
+
+<div id = "cup"></div>
+<div id = "connect"></div>
+<div id = "home">Home</div>
+<div id = "about">About</div>
+<div id = "read">Read</div>
+<div id = "photos">Photos</div>
+
+<div id = "pagecontent">
+	<iframe id = "pagetext" src = "hometext.html" width = "100%" height = "100%" frameborder="0"></iframe>
+</div>
+
+<div id = "whitebox"></div>
+
+<div id = "footer">
+	<center>Big Straw Magazine 2014-2015</center>
+</div>
+
+</body>
+</html>

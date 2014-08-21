@@ -1,0 +1,121 @@
+<html>
+<head>	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="photos_style.css" />
+	
+	<!--fancybox-->
+	<script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
+	<!--scrollers-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script src="jquery.mousewheel.min.js"></script>
+	<script src="jquery.mCustomScrollbar.js"></script>
+	<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("a[rel=hotpot]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+			$("a[rel=speeddating]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+			$("a[rel=ironchef]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+			
+			(function($){
+			$(window).load(function(){
+				$("#albumlist").mCustomScrollbar({
+					set_width:false, /*optional element width: boolean, pixels, percentage*/
+					set_height:false, /*optional element height: boolean, pixels, percentage*/
+					horizontalScroll:false, /*scroll horizontally: boolean*/
+					scrollInertia:550, /*scrolling inertia: integer (milliseconds)*/
+					scrollEasing:"easeOutCirc", /*scrolling easing: string*/
+					mouseWheel:"pixels", /*mousewheel support and velocity: boolean, "auto", integer, "pixels"*/
+					mouseWheelPixels:60, /*mousewheel pixels amount: integer*/
+					autoDraggerLength:true, /*auto-adjust scrollbar dragger length: boolean*/
+					scrollButtons:{ /*scroll buttons*/
+						enable:false, /*scroll buttons support: boolean*/
+						scrollType:"continuous", /*scroll buttons scrolling type: "continuous", "pixels"*/
+						scrollSpeed:20, /*scroll buttons continuous scrolling speed: integer*/
+						scrollAmount:40 /*scroll buttons pixels scroll amount: integer (pixels)*/
+					},
+					advanced:{
+						updateOnBrowserResize:true, /*update scrollbars on browser resize (for layouts based on percentages): boolean*/
+						updateOnContentResize:false, /*auto-update scrollbars on content resize (for dynamic content): boolean*/
+						autoExpandHorizontalScroll:false, /*auto expand width for horizontal scrolling: boolean*/
+						autoScrollOnFocus:true /*auto-scroll on focused elements: boolean*/
+					},
+					callbacks:{
+						onScrollStart:function(){}, /*user custom callback function on scroll start event*/
+						onScroll:function(){}, /*user custom callback function on scroll event*/
+						onTotalScroll:function(){}, /*user custom callback function on scroll end reached event*/
+						onTotalScrollBack:function(){}, /*user custom callback function on scroll begin reached event*/
+						onTotalScrollOffset:0, /*scroll end reached offset: integer (pixels)*/
+						whileScrolling:false, /*user custom callback function on scrolling event*/
+						whileScrollingInterval:30 /*interval for calling whileScrolling callback: integer (milliseconds)*/
+					}
+				});
+			});
+			})(jQuery);
+		});
+
+	</script>
+<style type="text/css">
+body{
+	background-image:none;
+	background-color:#fff;
+	background-color:rgba(0,0,0,0);
+	overflow-y:hidden;
+}
+</style>
+</head>
+
+<body>
+	<h1>Photos</h1>
+	<hr>
+	<div id = "albumlistwrapper">
+		<div id = "albumlist">
+			<p>
+				Hot Pot<br />
+				<a rel ="hotpot" href="photos/HotPot/BS_hotpot_11.jpg" title="Hot Pot"><img class = "albumthumb" src="photos/HotPot/BS_hotpot_11.jpg" /></a>
+				<a rel ="hotpot" href="photos/HotPot/BS_hotpot_16.jpg" title="Hot Pot"><img class = "albumthumb" src="photos/HotPot/BS_hotpot_16.jpg" /></a>
+				<a rel ="hotpot" href="photos/HotPot/BS_hotpot_18.jpg" title="Hot Pot"><img class = "albumthumb" src="photos/HotPot/BS_hotpot_18.jpg" /></a>
+				<a rel ="hotpot" href="photos/HotPot/BS_hotpot_20.jpg" title="Hot Pot"><img class = "albumthumb" src="photos/HotPot/BS_hotpot_20.jpg" /></a>
+			</p>
+			<p>
+				Speed Dating<br />
+				<a rel ="speeddating" href="photos/SpeedDating/BS_speeddating_3.jpg" title="Speed Dating"><img class = "albumthumb" src="photos/SpeedDating/BS_speeddating_3.jpg" /></a>
+				<a rel ="speeddating" href="photos/SpeedDating/BS_speeddating_5.jpg" title="Speed Dating"><img class = "albumthumb" src="photos/SpeedDating/BS_speeddating_5.jpg" /></a>
+				<a rel ="speeddating" href="photos/SpeedDating/BS_speeddating_13.jpg" title="Speed Dating"><img class = "albumthumb" src="photos/SpeedDating/BS_speeddating_13.jpg" /></a>
+				<a rel ="speeddating" href="photos/SpeedDating/BS_speeddating_19.jpg" title="Speed Dating"><img class = "albumthumb" src="photos/SpeedDating/BS_speeddating_19.jpg" /></a>
+			</p>
+			<p>
+				Iron Chef<br />
+				<a rel ="ironchef" href="photos/IronChef/BS_ironChef_2.jpg" title="Iron Chef"><img class = "albumthumb" src="photos/IronChef/BS_ironChef_2.jpg" /></a>
+				<a rel ="ironchef" href="photos/IronChef/BS_ironChef_6.jpg" title="Iron Chef"><img class = "albumthumb" src="photos/IronChef/BS_ironChef_6.jpg" /></a>
+				<a rel ="ironchef" href="photos/IronChef/BS_ironChef_12.jpg" title="Iron Chef"><img class = "albumthumb" src="photos/IronChef/BS_ironChef_12.jpg" /></a>
+				<a rel ="ironchef" href="photos/IronChef/BS_ironChef_70.jpg" title="Iron Chef"><img class = "albumthumb" src="photos/IronChef/BS_ironChef_70.jpg" /></a>
+			</p>
+		</div>
+	</div>
+</body>
+</html>
